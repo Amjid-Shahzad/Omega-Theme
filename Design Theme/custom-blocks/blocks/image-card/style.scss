@@ -1,0 +1,28 @@
+.image-card-block {
+	text-align: center;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+
+	&:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	}
+
+	img {
+		display: block;
+		margin: 0 auto 10px auto;
+	}
+
+	h3 {
+		margin: 10px 0 5px 0;
+		font-size: 1.2rem;
+	}
+
+	p {
+		color: #555;
+		font-size: 0.95rem;
+	}
+}

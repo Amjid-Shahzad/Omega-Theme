@@ -1,0 +1,48 @@
+{
+  "apiVersion": 3,
+  "name": "custom-blocks/image-card",
+  "title": "Image Card",
+  "category": "design",
+  "icon": "format-image",
+  "description": "A customizable image card with title, description, and link.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": "Your title here"
+    },
+    "description": {
+      "type": "string",
+      "default": "Write a short description..."
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imgWidth": {
+      "type": "number",
+      "default": 300
+    },
+    "imgHeight": {
+      "type": "number",
+      "default": 200
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 8
+    }
+  },
+  "editorScript": "file:../../build/index.js",
+  "editorStyle": "file:../../build/index.css",
+  "style": "file:../../build/style-index.css"
+}

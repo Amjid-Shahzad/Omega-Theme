@@ -1,0 +1,28 @@
+{
+  
+  "name": "custom-blocks",
+  "version": "1.0.0",
+  "description": "",
+   "start": "wp-scripts start blocks/index.js --output-path=build",
+    "build": "wp-scripts build blocks/index.js --output-path=build",
+
+
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+
+
+
+  "keywords": [],
+  "author": "Amjad-Shahzad",
+  "license": "ISC",
+
+
+
+  "devDependencies": {
+    "@wordpress/scripts": "^30.27.0"
+  }
+
+
+}

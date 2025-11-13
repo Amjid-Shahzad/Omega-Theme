@@ -1,0 +1,212 @@
+{
+    "version": 3,
+    "settings": {
+        "appearanceTools": true,
+        "allowCustomClassName": true,
+        "color": {
+            "palette": [
+                {
+                    "slug": "website-background",
+                    "color": "#f7f7f7",
+                    "name": "Website Background"
+                },
+                {
+                    "slug": "page-background",
+                    "color": "var(--page-background)",
+                    "name": "Page Background"
+                },
+                {
+                    "slug": "header-background",
+                    "color": "#ffffff",
+                    "name": "Header Background"
+                },
+                {
+                    "slug": "footer-background",
+                    "color": "var(--footer-background)",
+                    "name": "Footer Background"
+                },
+                {
+                    "slug": "mega-menu-background",
+                    "color": "var(--mega-menu-background)",
+                    "name": "Mega Menu Background"
+                },
+                {
+                    "slug": "color-primary",
+                    "color": "var(--color-primary)",
+                    "name": "Primary"
+                },
+                {
+                    "slug": "color-on-primary",
+                    "color": "var(--color-on-primary)",
+                    "name": "On Primary"
+                },
+                {
+                    "slug": "color-secondary",
+                    "color": "var(--color-secondary)",
+                    "name": "Secondary"
+                },
+                {
+                    "slug": "color-on-secondary",
+                    "color": "var(--color-on-secondary)",
+                    "name": "On Secondary"
+                },
+                {
+                    "slug": "color-accent",
+                    "color": "var(--color-accent)",
+                    "name": "Accent"
+                },
+                {
+                    "slug": "color-on-accent",
+                    "color": "var(--color-on-accent)",
+                    "name": "On Accent"
+                },
+                {
+                    "slug": "color-success",
+                    "color": "var(--color-success)",
+                    "name": "Success"
+                },
+                {
+                    "slug": "color-error",
+                    "color": "var(--color-error)",
+                    "name": "Error"
+                },
+                {
+                    "slug": "text-primary",
+                    "color": "var(--text-primary)",
+                    "name": "Text Primary"
+                },
+                {
+                    "slug": "text-secondary",
+                    "color": "var(--text-secondary)",
+                    "name": "Text Secondary"
+                },
+                {
+                    "slug": "text-muted",
+                    "color": "var(--text-muted)",
+                    "name": "Text Muted"
+                },
+                {
+                    "slug": "link",
+                    "color": "var(--link)",
+                    "name": "Link"
+                },
+                {
+                    "slug": "border",
+                    "color": "var(--border)",
+                    "name": "Border"
+                },
+                {
+                    "slug": "divider",
+                    "color": "var(--divider)",
+                    "name": "Divider"
+                },
+                {
+                    "slug": "shadow",
+                    "color": "var(--shadow)",
+                    "name": "Shadow"
+                },
+                {
+                    "slug": "hover",
+                    "color": "var(--hover)",
+                    "name": "Hover"
+                },
+                {
+                    "slug": "focus",
+                    "color": "var(--focus)",
+                    "name": "Focus"
+                }
+            ],
+            "custom": true
+        },
+        "typography": {
+            "fontFamilies": [
+                {
+                    "slug": "base-font",
+                    "name": "Base Font",
+                    "fontFamily": "\"jost\""
+                },
+                {
+                    "slug": "heading-font",
+                    "name": "Heading Font",
+                    "fontFamily": "\"poppins\""
+                },
+                {
+                    "slug": "subheading-font",
+                    "name": "Subheading Font",
+                    "fontFamily": "'poppins'"
+                },
+                {
+                    "slug": "button-font",
+                    "name": "Button Font",
+                    "fontFamily": "'poppins'"
+                }
+            ]
+        }
+    },
+    "styles": {
+        "typography": {
+            "fontFamily": "var(--base-font)"
+        },
+        "elements": {
+            "heading": {
+                "typography": {
+                    "fontFamily": "var(--heading-font)"
+                }
+            },
+            "button": {
+                "typography": {
+                    "fontFamily": "var(--button-font)"
+                }
+            }
+        },
+        "blocks": {
+            "button": {
+                "typography": {
+                    "fontFamily": "var(--button-font)",
+                    "fontSize": "16px",
+                    "fontWeight": "600",
+                    "letterSpacing": "0.5px"
+                },
+                "color": {
+                    "background": "var(--button-background)",
+                    "text": "var(--button-text)"
+                },
+                "border": {
+                    "color": "var(--button-border-color)",
+                    "radius": "var(--button-border-radius)",
+                    "style": "solid",
+                    "width": "var(--button-border-width)"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "var(--button-padding-top-bottom)",
+                        "right": "var(--button-padding-right-left)",
+                        "bottom": "var(--button-padding-top-bottom)",
+                        "left": "var(--button-padding-right-left)"
+                    }
+                },
+                "elements": {
+                    "hover": {
+                        "color": {
+                            "background": "var(--button-background-hover)",
+                            "text": "var(--button-text-hover)"
+                        },
+                        "border": {
+                            "color": "var(--button-border-color-hover)",
+                            "radius": "var(--button-border-radius-hover)",
+                            "width": "var(--button-border-width-hover)"
+                        },
+                        "spacing": {
+                            "padding": {
+                                "top": "var(--button-padding-top-bottom-hover)",
+                                "right": "var(--button-padding-right-left-hover)",
+                                "bottom": "var(--button-padding-top-bottom-hover)",
+                                "left": "var(--button-padding-right-left-hover)"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

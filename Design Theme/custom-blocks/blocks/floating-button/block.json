@@ -1,0 +1,30 @@
+{
+  "apiVersion": 2,
+  "name": "custom-blocks/floating-button",
+  "title": "Floating Button",
+    "category": "theme-blocks",
+    "textdomain": "amjad-theme",
+  "icon": "button",
+  "description": "A fully customizable floating button with advanced controls.",
+  "supports": { "html": false },
+  "attributes": {
+    "enabled": { "type": "boolean", "default": true },
+    "text": { "type": "string", "default": "Click Me" },
+    "url": { "type": "string", "default": "#" },
+    "borderRadius": { "type": "number", "default": 50 },
+    "borderUnit": { "type": "string", "default": "px" },
+    "width": { "type": "number", "default": 60 },
+    "height": { "type": "number", "default": 60 },
+    "bgColor": { "type": "string", "default": "#0073aa" },
+    "hoverBgColor": { "type": "string", "default": "#005177" },
+    "textColor": { "type": "string", "default": "#ffffff" },
+    "hoverTextColor": { "type": "string", "default": "#ffffff" },
+    "imageUrl": { "type": "string", "default": "" },
+    "position": { "type": "string", "default": "bottom-right" },
+    "margin": { "type": "number", "default": 20 },
+    "animation": { "type": "boolean", "default": true }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.scss",
+  "editorStyle": "file:./editor.scss"
+}

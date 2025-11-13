@@ -1,0 +1,139 @@
+/* ===============================
+   Import Google Fonts
+   =============================== */
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* ===============================
+   Root Variables
+   =============================== */
+:root {
+  /* Colors */
+  --website-background: #f7f7f7;
+  --page-background: #5803c7;
+  --header-background: #ffffff;
+  --footer-background: #ffffff;
+  --mega-menu-background: #ffffff;
+  --color-primary: #0073e6;
+  --color-on-primary: #005bb5;
+  --color-secondary: #ff6600;
+  --color-on-secondary: #ff6600;
+  --color-accent: #00cc66;
+  --color-on-accent: #00cc66;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-muted: #999999;
+  --link: #007bff;
+  --border: #dadada;
+  --divider: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --hover: rgba(0, 0, 0, 0.05);
+  --focus: rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --base-font: "jost";
+  --heading-font: "poppins";
+  --subheading-font: 'poppins';
+  --button-font: 'poppins';
+
+  /* Buttons */
+  --button-background: #292fb2;
+  --button-text: #ffffff;
+  --button-border-color: #3038d3;
+  --button-border-width: 2px;
+  --button-radius: 5px;
+  --button-padding-top-buttom: 10px;
+  --button-padding-right-left: 20px;
+
+  /* Hover */
+  --button-background-hover: #ffffff;
+  --button-text-hover: #3038d3;
+  --button-border-color-hover: #3038d3;
+  --button-border-width-hover: 2px;
+  --button-radius-hover: 5px;
+  --button-padding-top-buttom-hover: 10px;
+  --button-padding-right-left-hover: 20px;
+}
+
+/* ===============================
+   Typography Usage
+   =============================== */
+body {
+  background-color: var(--website-background);
+  color: var(--text-primary);
+  font-family: var(--base-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+}
+
+.subtitle {
+  font-family: var(--subheading-font);
+}
+
+button,
+.wp-block-button__link {
+  font-family: var(--button-font);
+}
+
+/* ===============================
+   Button Styling
+   =============================== */
+button,
+input[type="button"],
+input[type="submit"],
+.wp-block-button__link {
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: var(--button-border-width) solid var(--button-border-color);
+  border-radius: var(--button-radius);
+  padding: var(--button-padding-top-buttom) var(--button-padding-right-left);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+button:hover,
+button:focus,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+.wp-block-button__link:hover,
+.wp-block-button__link:focus {
+  background-color: var(--button-background-hover);
+  color: var(--button-text-hover);
+  border-color: var(--button-border-color-hover);
+  border-width: var(--button-border-width-hover);
+  border-radius: var(--button-radius-hover);
+  padding: var(--button-padding-top-buttom-hover)
+    var(--button-padding-right-left-hover);
+  outline: none;
+}
+
+.site-content {
+  padding: 0 20px;
+}
+.site-footer {
+  background-color: var(--footer-background);
+
+  text-align: center;
+}
+.site-header {
+  background-color: var(--header-background);
+}
+.mega-menu {
+  background-color: var(--mega-menu-background);
+}
+/* .page {
+  background-color: var(--page-background);
+} */

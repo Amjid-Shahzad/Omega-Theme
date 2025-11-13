@@ -1,0 +1,1 @@
+console.log("My Theme Home page template");

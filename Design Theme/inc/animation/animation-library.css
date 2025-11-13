@@ -1,0 +1,50 @@
+/* ================================
+   ARROW ICON (Pure CSS)
+   ================================ */
+.arrow-icon {
+  --arrow-size: 8px;
+  --arrow-thickness: 2px;
+  --arrow-color: #111;
+  --arrow-hover: #22c55e;
+  --arrow-rotate: -45deg;
+
+  display: inline-block;
+  width: calc(var(--arrow-size) * 2);
+  height: calc(var(--arrow-size) * 2);
+  border-right: var(--arrow-thickness) solid var(--arrow-color);
+  border-bottom: var(--arrow-thickness) solid var(--arrow-color);
+  transform: rotate(var(--arrow-rotate));
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover color + motion */
+.arrow-icon:hover {
+  border-color: var(--arrow-hover);
+  transform: rotate(var(--arrow-rotate)) translateX(3px);
+}
+
+/* Direction variants */
+.arrow-icon[data-dir="left"] {
+  --arrow-rotate: 135deg;
+}
+.arrow-icon[data-dir="up"] {
+  --arrow-rotate: -135deg;
+}
+.arrow-icon[data-dir="down"] {
+  --arrow-rotate: 45deg;
+}
+
+/* Optional: continuous bounce animation */
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    transform: rotate(var(--arrow-rotate)) translateY(0);
+  }
+  50% {
+    transform: rotate(var(--arrow-rotate)) translateY(3px);
+  }
+}
+.arrow-icon[data-animate="true"] {
+  animation: arrow-bounce 1s ease-in-out infinite;
+}
