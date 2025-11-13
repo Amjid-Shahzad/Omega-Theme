@@ -5,16 +5,16 @@
 // ====================================================
 // EXIT IF ACCESSED DIRECTLY
 // ====================================================
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; 
+if (! defined('ABSPATH')) {
+    exit;
 }
 
-require_once get_template_directory() . '/early-output-check.php';
+require Theme_dir . '/early-output-check.php';
 
 // ====================================================
 // MAIN PATH FILE
 // ====================================================
-require_once get_template_directory() . '/inc/theme-setup/paths.php';
+require get_template_directory() . '/inc/theme-setup/paths.php';
 
 
 
@@ -41,15 +41,15 @@ require Theme_dir . '/inc/animation/animation-library.php';
 // ====================================================
 // BLOCK EDITOR
 // ====================================================
-add_action('enqueue_block_assets', function() {
+add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
         'editor-global-css',
-        get_template_directory_uri() . '/assets/css/editor.css', // or your file path
+        Theme_dir . '/assets/css/editor.css', // or your file path
         [],
         wp_get_theme()->get('Version')
     );
 });
-
+require_once Theme_dir . '/inc/block-editor/block-editor-init.php';
 
 
 // ====================================================
@@ -78,21 +78,22 @@ require_once Theme_dir . '/inc/customizer/global/global-init.php';
 /**
  * Customizer preview assets + data for AJAX sync
  */
-function customizer_preview_assets() {
+function customizer_preview_assets()
+{
     wp_enqueue_script(
         'theme-customizer-live',
         get_template_directory_uri() . '/assets/js/customizer-live.js',
-        array( 'customize-preview', 'jquery' ),
-        wp_get_theme()->get( 'Version' ),
+        array('customize-preview', 'jquery'),
+        wp_get_theme()->get('Version'),
         true
     );
 
-    wp_localize_script( 'theme-customizer-live', 'ThemeJSONSync', array(
-        'ajax_url' => admin_url( 'admin-ajax.php' ),
-        'nonce'    => wp_create_nonce( 'theme_json_sync' ),
-    ) );
+    wp_localize_script('theme-customizer-live', 'ThemeJSONSync', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('theme_json_sync'),
+    ));
 }
-add_action( 'customize_preview_init', 'customizer_preview_assets' );
+add_action('customize_preview_init', 'customizer_preview_assets');
 
 
 
@@ -181,7 +182,7 @@ require Theme_dir . '/templates/default-home.php';
 
 
 
-add_action('init', function() {
+add_action('init', function () {
     if (isset($_GET['mega_menu']) && $_GET['mega_menu'] !== '') {
         $slug = sanitize_title($_GET['mega_menu']);
         $mega = get_page_by_path($slug, OBJECT, 'mega_menu');
@@ -246,17 +247,17 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
 
 
 // Ensure pages fully support Elementor
-add_action( 'init', function() {
-    add_post_type_support( 'page', [ 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'elementor' ] );
+add_action('init', function () {
+    add_post_type_support('page', ['editor', 'thumbnail', 'excerpt', 'custom-fields', 'elementor']);
 });
 // Ensure mega_menu CPT supports Elementor
-add_action( 'init', function() {    
-    add_post_type_support( 'mega_menu', [ 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'elementor' ] );
-}); 
+add_action('init', function () {
+    add_post_type_support('mega_menu', ['editor', 'thumbnail', 'excerpt', 'custom-fields', 'elementor']);
+});
 // Ensure footer_section CPT supports Elementor
-add_action( 'init', function() {    
-    add_post_type_support( 'footer_section', [ 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'elementor' ] );
-}); 
+add_action('init', function () {
+    add_post_type_support('footer_section', ['editor', 'thumbnail', 'excerpt', 'custom-fields', 'elementor']);
+});
 
 
 
@@ -271,19 +272,19 @@ add_action( 'init', function() {
 
 
 
-add_filter( 'wp_theme_json_data_theme', function( $theme_json ) {
+add_filter('wp_theme_json_data_theme', function ($theme_json) {
     $path = get_stylesheet_directory() . '/theme.json';
-    if ( file_exists( $path ) ) {
-        $mtime = filemtime( $path );
+    if (file_exists($path)) {
+        $mtime = filemtime($path);
         $data = $theme_json->get_data();
         $data['version'] = 3; // ensure still valid
-        $theme_json = new WP_Theme_JSON( $data, 'theme' );
+        $theme_json = new WP_Theme_JSON($data, 'theme');
     }
     return $theme_json;
 });
 
 
-add_action('after_setup_theme', function() {
+add_action('after_setup_theme', function () {
     // Enable editor styles support
     add_theme_support('editor-styles');
 
@@ -296,33 +297,34 @@ add_action('after_setup_theme', function() {
 
 
 
-function register_blocks() {
+function register_blocks()
+{
     $blocks_dir = get_template_directory() . '/custom-blocks/blocks';
     $build_dir  = get_template_directory() . '/custom-blocks/build';
 
     // Ensure directory exists
-    if ( ! is_dir( $blocks_dir ) ) {
+    if (! is_dir($blocks_dir)) {
         return;
     }
 
     // Loop through each subfolder in /blocks
-    $block_folders = glob( $blocks_dir . '/*', GLOB_ONLYDIR );
+    $block_folders = glob($blocks_dir . '/*', GLOB_ONLYDIR);
 
-    foreach ( $block_folders as $block_folder ) {
+    foreach ($block_folders as $block_folder) {
         // Path to block.json
         $block_json = $block_folder . '/block.json';
 
-        if ( file_exists( $block_json ) ) {
+        if (file_exists($block_json)) {
             // Load block.json data
-            $block_name = basename( $block_folder );
+            $block_name = basename($block_folder);
 
             // Try to locate build files for this block
             $asset_file = $build_dir . '/' . $block_name . '/index.asset.php';
             $script_file = $build_dir . '/' . $block_name . '/index.js';
             $style_file  = $build_dir . '/' . $block_name . '/style-index.css';
 
-            if ( file_exists( $asset_file ) && file_exists( $script_file ) ) {
-                $assets = include( $asset_file );
+            if (file_exists($asset_file) && file_exists($script_file)) {
+                $assets = include($asset_file);
 
                 // Register compiled block assets
                 wp_register_script(
@@ -333,7 +335,7 @@ function register_blocks() {
                     true
                 );
 
-                if ( file_exists( $style_file ) ) {
+                if (file_exists($style_file)) {
                     wp_register_style(
                         'custom-block-' . $block_name,
                         get_template_directory_uri() . '/custom-blocks/build/' . $block_name . '/style-index.css',
@@ -351,16 +353,9 @@ function register_blocks() {
                 );
             } else {
                 // If no build files, register using raw source
-                register_block_type( $block_folder );
+                register_block_type($block_folder);
             }
         }
     }
 }
-add_action( 'init', 'register_blocks' );
-
-
-
-
-
-
-
+add_action('init', 'register_blocks');
