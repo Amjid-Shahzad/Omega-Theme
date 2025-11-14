@@ -62,16 +62,6 @@ add_action( 'wp_enqueue_scripts', 'load_files', 20 );
 
 
 
-function enqueue_customizer_live_preview() {
-    wp_enqueue_script(
-        'customizer-live',
-        get_template_directory_uri() . '/assets/js/customizer-live.js',
-        array( 'customize-preview', 'jquery' ),
-        filemtime( get_template_directory() . '/assets/js/customizer-live.js' ),
-        true
-    );
-}
-add_action( 'customize_preview_init', 'enqueue_customizer_live_preview' );
 
 
 // -------------------

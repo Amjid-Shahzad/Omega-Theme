@@ -9,7 +9,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-require Theme_dir . '/early-output-check.php';
+
 
 // ====================================================
 // MAIN PATH FILE
@@ -38,18 +38,32 @@ require Theme_dir . '/inc/admin/admin.php';
 require Theme_dir . '/inc/animation/animation-library.php';
 
 
-// ====================================================
-// BLOCK EDITOR
-// ====================================================
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style(
-        'editor-global-css',
-        Theme_dir . '/assets/css/editor.css', // or your file path
-        [],
-        wp_get_theme()->get('Version')
+
+
+
+
+// ✅ Customizer Live Preview
+add_action('customize_preview_init', function() {
+    wp_enqueue_script(
+        'theme-customizer-live-preview',
+        get_template_directory_uri() . '/inc/live-update/customizer/customizer-live-preview.js',
+        ['jquery', 'customize-preview'],
+        wp_get_theme()->get('Version'),
+        true
     );
 });
-require_once Theme_dir . '/inc/block-editor/block-editor-init.php';
+
+// ✅ Block Editor Live Preview
+add_action('enqueue_block_editor_assets', function(){
+    wp_enqueue_script(
+        'theme-block-editor-live-preview',
+        get_template_directory_uri() . '/inc/live-update/block-editor/block-editor-live-preview.js',
+        ['jquery'],
+        wp_get_theme()->get('Version'),
+        true
+    );
+});
+
 
 
 // ====================================================
@@ -70,30 +84,7 @@ require_once Theme_dir . '/inc/footer/footer-loader.php';
 require_once Theme_dir . '/inc/customizer/global/global-init.php';
 
 
-
-
-
-
-
-/**
- * Customizer preview assets + data for AJAX sync
- */
-function customizer_preview_assets()
-{
-    wp_enqueue_script(
-        'theme-customizer-live',
-        get_template_directory_uri() . '/assets/js/customizer-live.js',
-        array('customize-preview', 'jquery'),
-        wp_get_theme()->get('Version'),
-        true
-    );
-
-    wp_localize_script('theme-customizer-live', 'ThemeJSONSync', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('theme_json_sync'),
-    ));
-}
-add_action('customize_preview_init', 'customizer_preview_assets');
+require_once Theme_dir . '/inc/live-update/generate-css.php';
 
 
 
@@ -281,15 +272,6 @@ add_filter('wp_theme_json_data_theme', function ($theme_json) {
         $theme_json = new WP_Theme_JSON($data, 'theme');
     }
     return $theme_json;
-});
-
-
-add_action('after_setup_theme', function () {
-    // Enable editor styles support
-    add_theme_support('editor-styles');
-
-    // Load the main stylesheet inside the block editor
-    add_editor_style('assets/css/main.css');
 });
 
 
